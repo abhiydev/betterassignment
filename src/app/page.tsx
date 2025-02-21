@@ -20,7 +20,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="w-full transition-all duration-700 ease-in-out">
+    <div className="w-full transition-all duration-700 ease-in-out overflow-y-hidden">
       <Navbar scrolled={isScrolled} />
       <div className="bg-green-900">
         <Hero />

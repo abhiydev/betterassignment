@@ -5,7 +5,7 @@ const HeroStory = () => {
   const [curImg, setCurImg] = useState<string>("Arian")
 
   return (
-    <div className="bg-white">
+    <div className="bg-white overflow-x-hidden">
       {/* Container: one column on mobile, two columns for md and above */}
       <div className="mx-4 md:mt-96 lg:mt-10 sm:mt-96 mt-56 grid grid-cols-1 md:grid-cols-2 md:gap-8">
         {/* Left Column on Desktop: Image selection buttons & displayed image */}

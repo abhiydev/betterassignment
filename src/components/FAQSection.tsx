@@ -8,20 +8,20 @@ const FAQSection: React.FC = () => {
   const categories = ["Our products", "Calculators", "Guides & FAQs"];
 
   return (
-    <section className="section w-full pb-base lg:pb-12">
+    <section className="section w-full overflow-hidden pb-base lg:pb-12">
       <div className="m-auto flex max-w-screen-2xl flex-col items-center md:items-start gap-8 px-6 py-20 md:px-10 lg:gap-[60px]">
         <div className="flex w-full max-w-lg flex-wrap gap-12 lg:gap-6 lg:max-w-none lg:items-end lg:justify-between">
           <h2 className="font-bold text-textPrimary leading-heading m-0 p-0 md:text-2xl md:tracking-tight w-full max-w-lg !text-3xl tracking-tight">
             Got questions?<br />We&apos;ve got answers
           </h2>
-          <div className="flex gap-3 lg:gap-6 scrollbar-hide">
+          <div className="flex gap-1 lg:gap-4">
             {categories.map((category, index) => (
               <button
                 key={index}
                 onClick={() => setActiveCategory(category)}
                 className={`inline-flex items-center justify-center whitespace-nowrap rounded-full text-base font-bold leading-normal transition-all ease-in-out duration-200 border h-12 px-6 py-3 w-auto shadow-accentBorderSecondary border-accentBorderSecondary shadow-[0_0_0_4px_inset] text-interactivePrimary hover:text-green-800 ${
                   activeCategory === category
-                    ? "text-green-800 border-[6px]"
+                    ? "text-green-800"
                     : "border border-green-700"
                 }`}
               >
