@@ -193,7 +193,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
                   : "hover:bg-white hidden md:flex justify-center items-center mr-6 px-4 py-3 text-xs md:text-sm hover:text-black rounded-full"
               }`}
             >
-              Sign In
+              SignIn
             </button>
             <button
               className={`${

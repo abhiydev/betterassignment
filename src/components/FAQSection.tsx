@@ -14,7 +14,7 @@ const FAQSection: React.FC = () => {
           <h2 className="font-bold text-textPrimary leading-heading m-0 p-0 md:text-2xl md:tracking-tight w-full max-w-lg !text-3xl tracking-tight">
             Got questions?<br />We&apos;ve got answers
           </h2>
-          <div className="flex gap-3 overflow-x-scroll lg:gap-6 scrollbar-hide">
+          <div className="flex gap-3 lg:gap-6 scrollbar-hide">
             {categories.map((category, index) => (
               <button
                 key={index}
