@@ -11,7 +11,7 @@ const FAQSection: React.FC = () => {
     <section className="section w-full pb-base lg:pb-12">
       <div className="m-auto flex max-w-screen-2xl flex-col items-center md:items-start gap-8 px-6 py-20 md:px-10 lg:gap-[60px]">
         <div className="flex w-full max-w-lg flex-wrap gap-12 lg:gap-6 lg:max-w-none lg:items-end lg:justify-between">
-          <h2 className="font-bold text-textPrimary leading-heading m-0 p-0 text-xl md:text-2xl md:tracking-tight w-full max-w-lg !text-3xl tracking-tight">
+          <h2 className="font-bold text-textPrimary leading-heading m-0 p-0 md:text-2xl md:tracking-tight w-full max-w-lg !text-3xl tracking-tight">
             Got questions?<br />We&apos;ve got answers
           </h2>
           <div className="flex gap-3 overflow-x-scroll lg:gap-6 scrollbar-hide">
