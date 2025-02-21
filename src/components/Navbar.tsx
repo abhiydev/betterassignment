@@ -7,7 +7,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { FaUser } from "react-icons/fa";
 import ItemsListForHam from "./sub/ItemsListForHam";
-import Image from "next/image";
 
 // Reusable Dropdown Component for Desktop Navigation
 const Dropdown = ({
@@ -62,7 +61,7 @@ const Dropdown = ({
 
 const Navbar = ({ scrolled }: { scrolled: boolean }) => {
   const [isHamOpen, setIsHamOpen] = useState(false);
-  const [isPhoneHovering, setIsPhoneHovering] = useState(false);
+  // const [isPhoneHovering, setIsPhoneHovering] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const callContainerRef = useRef<HTMLDivElement>(null);
   const dropdownContainerRef = useRef<HTMLDivElement>(null);
