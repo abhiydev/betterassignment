@@ -310,7 +310,7 @@ const Navbar = ({ scrolled }: { scrolled: boolean }) => {
 };
 
 export default Navbar;
-function setIsPhoneHovering(arg0: boolean) {
+function setIsPhoneHovering() {
   throw new Error("Function not implemented.");
 }
 
