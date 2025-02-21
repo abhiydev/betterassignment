@@ -6,9 +6,9 @@ import RatingComponent from "./sub/Rating";
 
 const Hero = () => {
     return (
-        <div className="bg-green-900 w-[100vw - 2ppx] relative text-white font-bold h-[100vh] flex justify-center items-center">
+        <div className="bg-green-900 w-[100vw - 20px] relative text-white font-bold h-[100vh] flex justify-center items-center">
             {/* Mobile Layout */}
-            <div className="lg:hidden w-full bg-green-900 flex flex-col items-center justify-start">
+            <div className="lg:hidden w-full mt-52 bg-green-900 flex flex-col items-center justify-start">
                 {/* Tagline */}
                 <h1 className="text-center mt-4 sm:mt-[50vh] text-green-400 text-5xl font-bold mb-4">
                     Mortgages
