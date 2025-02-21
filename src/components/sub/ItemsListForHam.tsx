@@ -11,7 +11,7 @@ const ItemsListForHam = ({ itemName, itemlist }: { itemName: string, itemlist: s
 
     return (
         <div className="w-full h-full">
-            <div className="flex justify-between w-full h-full">
+            <div className="flex justify-between w-full h-full p-2">
                 <h3 className="font-semibold">
                     {itemName}
                 </h3>
