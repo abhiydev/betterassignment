@@ -8,19 +8,21 @@ import Link from "next/link";
 import { FaUser } from "react-icons/fa";
 import ItemsListForHam from "./sub/ItemsListForHam";
 
-// Reusable Dropdown Component for Desktop Navigation
-const Dropdown = ({
-  id,
-  title,
-  itemlist,
-  activeDropdown,
-  setActiveDropdown,
-}: {
+interface DropdownProps {
   id: string;
   title: React.ReactNode;
   itemlist: string;
   activeDropdown: string | null;
   setActiveDropdown: (id: string | null) => void;
+}
+
+// Reusable Dropdown Component for Desktop Navigation
+const Dropdown: React.FC<DropdownProps> = ({
+  id,
+  title,
+  itemlist,
+  activeDropdown,
+  setActiveDropdown,
 }) => {
   const isOpen = activeDropdown === id;
 
@@ -59,9 +61,14 @@ const Dropdown = ({
   );
 };
 
-const Navbar = ({ scrolled }: { scrolled: boolean }) => {
+interface NavbarProps {
+  scrolled: boolean;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
   const [isHamOpen, setIsHamOpen] = useState(false);
-  // const [isPhoneHovering, setIsPhoneHovering] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [isPhoneHovering, setIsPhoneHovering] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const callContainerRef = useRef<HTMLDivElement>(null);
   const dropdownContainerRef = useRef<HTMLDivElement>(null);
@@ -94,18 +101,13 @@ const Navbar = ({ scrolled }: { scrolled: boolean }) => {
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
-    return () =>
-      document.removeEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   return (
     <div
-      className={`sticky top-0 w-full z-50
-        flex h-full justify-between items-center
-        ${
-        scrolled
-          ? "bg-white"
-          : "bg-green-900 text-white"
+      className={`sticky top-0 w-full z-50 flex h-full justify-between items-center ${
+        scrolled ? "bg-white" : "bg-green-900 text-white"
       }`}
     >
       {/* Desktop Navbar */}
@@ -113,7 +115,7 @@ const Navbar = ({ scrolled }: { scrolled: boolean }) => {
         <>
           <div className="flex items-center">
             <Link
-              href={"#"}
+              href="#"
               className="text-xl md:text-2xl px-4 md:px-6 mx-2 md:mx-6 p-2 md:p-4 font-bold"
             >
               {/* Logo SVG remains unchanged */}
@@ -175,52 +177,40 @@ const Navbar = ({ scrolled }: { scrolled: boolean }) => {
             </div>
           </div>
           <ul className="flex justify-center items-center px-8 py-2 lg:px-16 lg:py-6">
-            <li className="list-none">
-              {/* Container for Phone Icon & Tooltip */}
-              <div
-                ref={callContainerRef}
-                className="relative border rounded-full py-1 scale-90 md:text-2xl mx-4 md:mx-8"
-              >
-                <Dropdown
-                  id="toCall"
-                  title={<IoIosCall />}
-                  itemlist="Call us anytime at (415) 523 88371"
-                  activeDropdown={activeDropdown}
-                  setActiveDropdown={setActiveDropdown}
-                />
-              </div>
-            </li>
-            <li>
-              <button
-                className={`${
-                  scrolled
-                    ? "hover:bg-gray-300 hidden md:flex justify-center items-center mr-6 px-4 py-3 text-xs md:text-sm hover:text-black rounded-full"
-                    : "hover:bg-white hidden md:flex justify-center items-center mr-6 px-4 py-3 text-xs md:text-sm hover:text-black rounded-full"
-                }`}
-              >
-                Sign In
-              </button>
-            </li>
-            <li>
-              <button
-                className={`${
-                  scrolled
-                    ? "bg-green-900 text-white font-serif lg:text-base md:scale-100 w-full transition-colors duration-300 ease-in-out hover:bg-green-900 text-xs md:text-sm mr-6 px-4 py-3 rounded-full"
-                    : "bg-green-500 text-black font-serif lg:text-base md:scale-100 w-full transition-colors duration-300 ease-in-out hover:bg-green-900 text-xs md:text-sm mr-6 px-4 py-3 rounded-full"
-                }`}
-              >
-                Get started
-              </button>
-            </li>
-            <li className="list-none">
-              <button
-                onClick={() => setIsHamOpen(true)}
-                className="flex justify-center lg:hidden items-center text-xl font-bold p-2"
-                aria-label="Open Menu"
-              >
-                <RxHamburgerMenu />
-              </button>
-            </li>
+            <div className="relative border rounded-full py-1 scale-90 md:text-2xl mx-4 md:mx-8" ref={callContainerRef}>
+              <Dropdown
+                id="toCall"
+                title={<IoIosCall />}
+                itemlist="Call us anytime at (415) 523 88371"
+                activeDropdown={activeDropdown}
+                setActiveDropdown={setActiveDropdown}
+              />
+            </div>
+            <button
+              className={`${
+                scrolled
+                  ? "hover:bg-gray-300 hidden md:flex justify-center items-center mr-6 px-4 py-3 text-xs md:text-sm hover:text-black rounded-full"
+                  : "hover:bg-white hidden md:flex justify-center items-center mr-6 px-4 py-3 text-xs md:text-sm hover:text-black rounded-full"
+              }`}
+            >
+              Sign In
+            </button>
+            <button
+              className={`${
+                scrolled
+                  ? "bg-green-900 text-white font-serif lg:text-base md:scale-100 w-full transition-colors duration-300 ease-in-out hover:bg-green-900 text-xs md:text-sm mr-6 px-4 py-3 rounded-full"
+                  : "bg-green-500 text-black font-serif lg:text-base md:scale-100 w-full transition-colors duration-300 ease-in-out hover:bg-green-900 text-xs md:text-sm mr-6 px-4 py-3 rounded-full"
+              }`}
+            >
+              Get started
+            </button>
+            <button
+              onClick={() => setIsHamOpen(true)}
+              className="flex justify-center lg:hidden items-center text-xl font-bold p-2"
+              aria-label="Open Menu"
+            >
+              <RxHamburgerMenu />
+            </button>
           </ul>
         </>
       )}
@@ -248,39 +238,39 @@ const Navbar = ({ scrolled }: { scrolled: boolean }) => {
               </button>
             </div>
             <ul className="m-4 space-y-2">
-              <li>
+              <div>
                 <ItemsListForHam
                   itemlist="Apply now, Purchase rates, Affordability calculator, Mortgage calculator, Rent vs buy calculator, Find an agent, VA loans, Learning center,"
                   itemName="Buy"
                 />
-              </li>
-              <li>
+              </div>
+              <div>
                 <ItemsListForHam
                   itemlist="Apply Now, Refinance rates, Cash-out refinance calculator, Learning Center,"
                   itemName="Refinance"
                 />
-              </li>
-              <li>
+              </div>
+              <div>
                 <ItemsListForHam
                   itemlist="Apply Now, Calculate your Cash 💵, HELOC vs. Cash-out Refinance, Learning Center,"
                   itemName="HELOC"
                 />
-              </li>
-              <li>
+              </div>
+              <div>
                 <ItemsListForHam
                   itemlist="Purchase mortgage rates, Refinance rates, Refinance cash-out rates,"
                   itemName="Rates"
                 />
-              </li>
-              <li>
+              </div>
+              <div>
                 <ItemsListForHam
                   itemlist="HELOC rates, Purchase VA rates, Get Insurance, Title and Closing, Better Attorney Match, Learning Center, Better Agent Match, For Agents, Better Duo, For Agents,"
                   itemName="Better+"
                 />
-              </li>
+              </div>
             </ul>
             <div className="mx-6 mt-8">
-              <div className="flex list-none gap-3" ref={dropdownContainerRef}>
+              <div className="flex gap-3" ref={dropdownContainerRef}>
                 <Dropdown
                   id="Phone"
                   title="Phone"
@@ -290,14 +280,10 @@ const Navbar = ({ scrolled }: { scrolled: boolean }) => {
                 />
               </div>
               <div className="flex flex-col mx-6 mt-12 gap-4">
-                <button
-                  className={`bg-green-500 text-black px-3 py-2 rounded-full`}
-                >
+                <button className="bg-green-500 text-black px-3 py-2 rounded-full">
                   Get started
                 </button>
-                <button
-                  className={"flex justify-center items-center gap-1 border border-black text-black px-3 py-2 rounded-full"}
-                >
+                <button className="flex justify-center items-center gap-1 border border-black text-black px-3 py-2 rounded-full">
                   Sign In <FaUser />
                 </button>
               </div>
@@ -310,7 +296,3 @@ const Navbar = ({ scrolled }: { scrolled: boolean }) => {
 };
 
 export default Navbar;
-function setIsPhoneHovering(p0: boolean) {
-  throw new Error("Function not implemented.");
-}
-
